@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import theme from "../../../themes/mainTheme";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { RatingStars } from "../ratingStars/RatingStars";
@@ -25,10 +25,11 @@ export const Card: React.FC<CardProps> = ({
         style={styles.image}
       />
       <View style={styles.subContainer}>
-        <Text>{hotelName}</Text>
-        <Text>{locationDescription}</Text>
-        <Text>{"Preço por noite R$ " + priceByNight}</Text>
-        <RatingStars starsNumbers={3} />
+        <Text style={styles.text}>{hotelName}</Text>
+        <Text style={styles.text}>{locationDescription}</Text>
+        <Text style={styles.text}>{"Preço por noite R$ " + priceByNight}</Text>
+        <br />
+        <RatingStars starsNumbers={ratingStars} />
       </View>
     </View>
   );
@@ -56,5 +57,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
-  text: {},
+  text: {
+    marginTop: 2,
+  },
 });

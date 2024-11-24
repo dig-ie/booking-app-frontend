@@ -36,13 +36,7 @@ export default function App() {
           ratingStars={3}
           locationDescription="good de mais"
         />
-        <Card
-          imagePath={"./src/assets/defaultHotelImage"}
-          hotelName="hotel name"
-          priceByNight={300}
-          ratingStars={3}
-          locationDescription="good de mais"
-        />
+
         <StatusBar style="auto" />
       </View>
     </ScrollView>
