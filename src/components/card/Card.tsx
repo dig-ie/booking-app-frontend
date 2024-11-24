@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
 import theme from "../../../themes/mainTheme";
+import { View, Text, Image, StyleSheet } from "react-native";
+import { RatingStars } from "../ratingStars/RatingStars";
 
 interface CardProps {
   imagePath: any;
@@ -24,9 +25,10 @@ export const Card: React.FC<CardProps> = ({
         style={styles.image}
       />
       <View style={styles.subContainer}>
-        <Text>texto1</Text>
-        <Text>texto2</Text>
-        <Text>texto3</Text>
+        <Text>{hotelName}</Text>
+        <Text>{locationDescription}</Text>
+        <Text>{"Preço por noite R$ " + priceByNight}</Text>
+        <RatingStars starsNumbers={3} />
       </View>
     </View>
   );
