@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Calendar } from "react-native-calendars";
 import theme from "./themes/mainTheme";
 import { Card } from "./src/components/card/Card";
+import { Grid } from "./src/components/grid/grid";
 
 export default function App() {
   return (
@@ -29,20 +30,39 @@ export default function App() {
           }}
         />
         <br />
-        <Card
-          imagePath={"./src/assets/defaultHotelImage"}
-          hotelName="hotel name"
-          priceByNight={300}
-          ratingStars={3}
-          locationDescription="good de mais"
-        />
-        <Card
-          imagePath={"./src/assets/defaultHotelImage"}
-          hotelName="hotel name"
-          priceByNight={300}
-          ratingStars={3}
-          locationDescription="good de mais"
-        />
+        <Grid
+          items={[
+            <Card
+              imagePath={"./src/assets/defaultHotelImage"}
+              hotelName="hotel name"
+              priceByNight={300}
+              ratingStars={3}
+              locationDescription="good de mais"
+            />,
+            <Card
+              imagePath={"./src/assets/defaultHotelImage"}
+              hotelName="hotel name"
+              priceByNight={300}
+              ratingStars={3}
+              locationDescription="good de mais"
+            />,
+            <Card
+              imagePath={"./src/assets/defaultHotelImage"}
+              hotelName="hotel name"
+              priceByNight={300}
+              ratingStars={3}
+              locationDescription="good de mais"
+            />,
+            <Card
+              imagePath={"./src/assets/defaultHotelImage"}
+              hotelName="hotel name"
+              priceByNight={300}
+              ratingStars={3}
+              locationDescription="good de mais"
+            />,
+          ]}
+        ></Grid>
+
         <StatusBar style="auto" />
       </View>
     </ScrollView>

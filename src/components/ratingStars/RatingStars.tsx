@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View } from "react-native";
 import { FaStar } from "react-icons/fa"; // Ícone de estrela do Font Awesome
 import { StyleSheet } from "react-native";
@@ -8,11 +8,16 @@ interface RatingStarsProps {
 }
 
 export const RatingStars: React.FC<RatingStarsProps> = ({ starsNumbers }) => {
+  //maximum stars number
+  if (starsNumbers > 5) {
+    starsNumbers = 5;
+  }
+  //on Stars array
   const starsNumberArray = Array.from(
     { length: starsNumbers },
     (_, index) => index + 1
   );
-
+  // off Stars array
   const offStarsArray = Array.from({ length: 5 - starsNumbers });
 
   return (
