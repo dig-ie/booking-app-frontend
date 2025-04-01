@@ -5,7 +5,6 @@ import { Calendar } from "react-native-calendars";
 const MyCalendar: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<string>("");
 
-  // Handler to handle date selection
   const onDayPress = (day: any) => {
     setSelectedDate(day.dateString);
   };
@@ -14,18 +13,13 @@ const MyCalendar: React.FC = () => {
     <View style={styles.container}>
       <Text style={styles.header}>Select a Date</Text>
       <Calendar
-        // Initially visible month. Default = Date()
         current={"2024-11-22"}
-        // Handler for when a date is selected
         onDayPress={onDayPress}
         markedDates={{
           [selectedDate]: { selected: true, selectedColor: "blue" },
         }}
-        // Format of the month header
         monthFormat={"yyyy MM"}
-        // Minimum date that can be selected
         minDate={"2023-01-01"}
-        // Maximum date that can be selected
         maxDate={"2025-12-31"}
       />
       <Text style={styles.selectedDateText}>

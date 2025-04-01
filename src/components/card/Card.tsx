@@ -5,10 +5,10 @@ import { RatingStars } from "../ratingStars/RatingStars";
 
 interface CardProps {
   imagePath: any;
-  hotelName: String;
-  priceByNight: Number;
-  ratingStars: Number;
-  locationDescription: String;
+  hotelName: string;
+  priceByNight: number;
+  ratingStars: number;
+  locationDescription: string;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -25,10 +25,15 @@ export const Card: React.FC<CardProps> = ({
         style={styles.image}
       />
       <View style={styles.subContainer}>
-        <Text style={styles.text}>{hotelName}</Text>
-        <Text style={styles.text}>{locationDescription}</Text>
-        <Text style={styles.text}>{"Preço por noite R$ " + priceByNight}</Text>
-        <br />
+        <Text style={styles.hotelName} numberOfLines={2}>
+          {hotelName}
+        </Text>
+        <Text style={styles.location} numberOfLines={1}>
+          {locationDescription}
+        </Text>
+        <Text style={styles.price}>R$ {priceByNight} / noite</Text>
+      </View>
+      <View style={styles.ratingContainer}>
         <RatingStars starsNumbers={ratingStars} />
       </View>
     </View>
@@ -38,26 +43,44 @@ export const Card: React.FC<CardProps> = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.secondaryBackground,
-    minHeight: 300,
-    maxWidth: 200,
-    margin: 8,
+    width: 160,
     borderRadius: 8,
-    shadowColor: "#222", // Cor da sombra (mais escura)
-    shadowOffset: { width: 5, height: 5 }, // Deslocamento da sombra (direita e para baixo)
-    shadowOpacity: 0.5, // Opacidade da sombra (aumentada para mais escuro)
-    shadowRadius: 6, // Raio da sombra (um pouco maior para uma sombra mais forte)
-    elevation: 5, // Necessário para Android
-  },
-  subContainer: {
-    padding: 8,
+    margin: 8,
+    shadowColor: "#222",
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+    elevation: 5,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: "100%",
+    height: 80,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
-  text: {
-    marginTop: 2,
+  subContainer: {
+    padding: 8,
+    minHeight: 80, // Mantém altura fixa para evitar empurrões
+    justifyContent: "center",
+  },
+  hotelName: {
+    fontWeight: "bold",
+    fontSize: 14,
+    flexShrink: 1,
+  },
+  location: {
+    fontSize: 12,
+    color: theme.colors.secondaryText,
+  },
+  price: {
+    fontSize: 12,
+    fontWeight: "600",
+    marginTop: 4,
+  },
+  ratingContainer: {
+    alignItems: "center",
+    paddingBottom: 8,
   },
 });
+
+export default Card;

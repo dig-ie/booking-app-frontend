@@ -1,77 +1,28 @@
-import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { Calendar } from "react-native-calendars";
-import theme from "./themes/mainTheme";
-import { Card } from "./src/components/card/Card";
-import { Grid } from "./src/components/grid/grid";
+import React from "react";
+// import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+// Importando as telas
+import HomeScreen from "./src/screens/HomeScreen";  // Tela inicial
+import ProfileScreen from "./src/screens/ProfileScreen";  // Tela de perfil
+import LoginScreen from "./src/screens/LoginScreen";
+
+// Criando a pilha de navegação
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <ScrollView>
-      <View style={styles.mainContainer}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <Calendar
-          style={{
-            borderWidth: 0,
-            borderColor: "gray",
-            height: 320,
-            maxWidth: 320,
-            borderRadius: 8,
-          }}
-          theme={{
-            backgroundColor: theme.colors.background,
-            calendarBackground: theme.colors.secondaryBackground,
-            textSectionTitleColor: theme.colors.primaryText,
-            selectedDayBackgroundColor: theme.colors.primary,
-            selectedDayTextColor: theme.colors.secondaryText,
-            todayTextColor: theme.colors.tertiary,
-            dayTextColor: theme.colors.secondaryText,
-            textDisabledColor: theme.colors.secondary,
-          }}
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
         />
-        <br />
-        <Grid
-          items={[
-            <Card
-              imagePath={"./src/assets/defaultHotelImage"}
-              hotelName="hotel name"
-              priceByNight={300}
-              ratingStars={3}
-              locationDescription="good de mais"
-            />,
-            <Card
-              imagePath={"./src/assets/defaultHotelImage"}
-              hotelName="hotel name"
-              priceByNight={300}
-              ratingStars={3}
-              locationDescription="good de mais"
-            />,
-            <Card
-              imagePath={"./src/assets/defaultHotelImage"}
-              hotelName="hotel name"
-              priceByNight={300}
-              ratingStars={3}
-              locationDescription="good de mais"
-            />,
-            <Card
-              imagePath={"./src/assets/defaultHotelImage"}
-              hotelName="hotel name"
-              priceByNight={300}
-              ratingStars={3}
-              locationDescription="good de mais"
-            />,
-          ]}
-        ></Grid>
-
-        <StatusBar style="auto" />
-      </View>
-    </ScrollView>
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    alignItems: "center",
-  },
-});
